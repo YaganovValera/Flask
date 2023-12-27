@@ -14,11 +14,19 @@
                 <li><a href="/">Главная</a></li>
                 <li><a href="/clothing">Одежда</a></li>
                 <li><a href="/shoes">Обувь</a></li>
+                {% if status %}
+                    <li><a href="/logout">Выйти</a></li>
+                {% else %}
+                    <li><a href="/login">Войти</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
 
     <main>
+         {% if user_name %}
+            <h2> Добро пожаловать {{ user_name }}! </h2>
+        {% endif %}
 
         {% block content %}
         <h2>Что-то про магазин</h2>
