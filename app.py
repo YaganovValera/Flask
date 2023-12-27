@@ -1,11 +1,37 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request, redirect, url_for, make_response
 
 app = Flask(__name__)
+app.secret_key = '5f214cacbd30c2ae4784b520f17912ae0d5d8c16ae98128e3f549546221265e4'
 
 
 @app.route('/')
 def home():
-    return render_template('base.html')
+    user_name = request.cookies.get('user_name')
+    status = user_name is not None
+    return render_template('base.html', status=status, user_name=user_name)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+
+        response = make_response(redirect(url_for('home')))
+        response.set_cookie('user_name', name)
+        response.set_cookie('user_email', email)
+
+        return response
+
+    return render_template('form.html', title='Вход')
+
+
+@app.route('/logout')
+def logout():
+    response = make_response(redirect(url_for('login')))
+    response.delete_cookie('user_name')
+    response.delete_cookie('user_email')
+    return response
 
 
 @app.route('/clothing')
