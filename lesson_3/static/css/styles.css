@@ -38,76 +38,70 @@ footer {
     width: 100%;
 }
 
-h1 {
-    text-align: center;
-    color: #ffffff;;
-}
-
-.container {
-    width: 50%;
-    margin: auto;
-    overflow: hidden;
-    max-width: 600px;
-}
-
-form {
-    background: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.flashes li {
-    color: #ff0000;
-}
-
-form {
-    background: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form p {
-    margin: 0;
-    padding: 10px 0;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-}
-
-input[type="submit"] {
-    background: #333;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background: #555;
-}
-
 a {
     color: #44cf62;;
     text-decoration: none;
 }
 
 a:hover {
+    text-decoration: underline;
+}
+
+.dop-form {
+    text-align: center;
+    color: #555;
+    margin-top: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+form input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+form .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+form a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+form a:hover {
     text-decoration: underline;
 }
