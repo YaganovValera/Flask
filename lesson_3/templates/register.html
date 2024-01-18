@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        {% for field in form if field.name != 'csrf_token' and field.name != 'submit'%}
+        <p>
+            {{ field.label }}<br>
+            {{ field }}
+            {% if field.errors %}
+                <ul class="alert alert-danger">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </p>
+        {% endfor %}
+        {{ form.submit }}
+    </form>
+    <p class="dop-form">Уже есть аккаунт? <a href="{{ url_for('login') }}">Войдите</a></p>
+{% endblock %}

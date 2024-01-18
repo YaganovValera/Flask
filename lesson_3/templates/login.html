@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Вход</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        <label for="email">Email:</label>
+        {{ form.email }}
+        <br>
+        <label for="password">Пароль:</label>
+        {{ form.password }}
+        <br>
+        {{ form.submit }}
+    </form>
+    <p class="dop-form">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a></p>
+{% endblock %}
