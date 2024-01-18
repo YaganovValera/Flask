@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Вход</h1>
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class="flashes">
@@ -10,7 +11,8 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <form method="post" action="{{ url_for('login') }}">
+
+    <form method="post" action="">
         {{ form.hidden_tag() }}
         {{ form.csrf_token }}
         <label for="email">Email:</label>
@@ -19,9 +21,7 @@
         <label for="password">Пароль:</label>
         {{ form.password }}
         <br>
-        <p>
-            <input type="submit" value="Войти">
-        </p>
+        {{ form.submit }}
     </form>
-    <p>Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a></p>
+    <p class="dop-form">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a></p>
 {% endblock %}
