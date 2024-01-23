@@ -39,15 +39,14 @@ exp_urls = [
 def download_image(url, folder, start_time):
     """uploading photos to a folder"""
     try:
-        response = requests.get(url, stream=True)
+        response = requests.get(url)
         if response.status_code == 200:
             # Extracting the file name from the URL
-            parsed_url = urlparse(url)
-            filename = os.path.join(folder, os.path.basename(parsed_url.path))
+            filename = os.path.join(folder, os.path.basename(url))
 
             # Saving the image
             with open(filename, 'wb') as file:
-                for chunk in response.iter_content(chunk_size=1024):
+                for chunk in response.iter_content():
                     file.write(chunk)
 
             print(f"Скачано: {url} -> {filename}, Время загрузки: {time.time()-start_time:.2f}")
@@ -111,13 +110,12 @@ async def async_download_image(session, url, folder, start_time):
         async with session.get(url) as response:
             if response.status == 200:
                 # Extracting the file name from the URL
-                parsed_url = urlparse(url)
-                filename = os.path.join(folder, os.path.basename(parsed_url.path))
+                filename = os.path.join(folder, os.path.basename(url))
 
                 # Saving the image
                 with open(filename, 'wb') as file:
                     while True:
-                        chunk = await response.content.read(1024)
+                        chunk = await response.content.read()
                         if not chunk:
                             break
                         file.write(chunk)
