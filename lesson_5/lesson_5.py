@@ -61,9 +61,9 @@ async def create_task(task: Task):
 # PUT /tasks/{id}
 @app.put("/tasks/{task_id}", response_model=Task)
 async def update_task(task_id: int, updated_task: Task):
-    task = get_task_by_id(task_id)
-    tasks_db[tasks_db.index(task)] = updated_task
-    return updated_task
+    if get_task_by_id(task_id):
+        tasks_db[task_id] = updated_task
+        return updated_task
 
 
 # DELETE /tasks/{id}
